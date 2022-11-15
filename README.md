@@ -1,38 +1,45 @@
-# XapiService client library for JavaScript
+## @xopenapi/xapis-js@0.0.3
 
-This package contains an isomorphic SDK (runs both in Node.js and in browsers) for XapiService client.
+This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
+Environment
+* Node.js
+* Webpack
+* Browserify
 
+Language level
+* ES5 - you must have a Promises/A+ library installed
+* ES6
 
-[Package (NPM)](https://www.npmjs.com/package/@xopenapi/xapis) |
-[Samples](https://github.com/Azure-Samples/azure-samples-js-management)
+Module system
+* CommonJS
+* ES6 module system
 
-## Getting started
+It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
 
-### Currently supported environments
+### Building
 
-- [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule)
-- Latest versions of Safari, Chrome, Edge and Firefox.
-
-See our [support policy](https://github.com/Azure/azure-sdk-for-js/blob/main/SUPPORT.md) for more details.
-
-
-### Install the `@xopenapi/xapis` package
-
-Install the XapiService client library for JavaScript with `npm`:
-
-```bash
-npm install @xopenapi/xapis
+To build and compile the typescript sources to javascript use:
+```
+npm install
+npm run build
 ```
 
+### Publishing
 
+First build the package then run ```npm publish```
 
-### JavaScript Bundle
-To use this client library in the browser, first you need to use a bundler. For details on how to do this, please refer to our [bundling documentation](https://aka.ms/AzureSDKBundling).
+### Consuming
 
-## Key concepts
+navigate to the folder of your consuming project and run one of the following commands.
 
-### XapiService
+_published:_
 
-`XapiService` is the primary interface for developers using the XapiService client library. Explore the methods on this client object to understand the different features of the XapiService service that you can access.
+```
+npm install @xopenapi/xapis-js@0.0.3 --save
+```
 
+_unPublished (not recommended):_
+
+```
+npm install PATH_TO_GENERATED_PACKAGE --save
