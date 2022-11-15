@@ -1,8 +1,2 @@
 .DS_Store
-dist
-dist-esm
-dist-test
 node_modules
-review
-temp
-types
