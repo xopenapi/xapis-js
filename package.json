@@ -1,6 +1,6 @@
 {
   "name": "@xopenapi/xapis-js",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "OpenAPI client for @xopenapi/xapis-js",
   "author": "OpenAPI-Generator",
   "repository": {
@@ -20,6 +20,6 @@
     "registry": "https://github.com/xopenapi/xapis-js"
   },
   "dependencies": {
-    "core-js": "^3.26.1"
+    "core-js": "^3.27.1"
   }
 }

@@ -45,13 +45,13 @@ export interface StorageTemporaryCredentials {
      */
     region: string;
     /**
-     * 存储对应的CDN地址
+     * CDN地址
      * @type {string}
      * @memberof StorageTemporaryCredentials
      */
     cdn?: string;
     /**
-     * 上传路径对应的CDN地址
+     * 上传之后的文件地址
      * @type {string}
      * @memberof StorageTemporaryCredentials
      */

@@ -124,6 +124,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -166,6 +170,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -207,6 +215,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -252,6 +264,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -293,6 +309,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -336,6 +356,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -377,6 +401,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -433,6 +461,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -476,6 +508,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -518,6 +554,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -566,6 +606,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -610,6 +654,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -657,6 +705,10 @@ export class ConfigApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);
@@ -702,6 +754,10 @@ export class ConfigApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;

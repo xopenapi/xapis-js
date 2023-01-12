@@ -55,6 +55,10 @@ export class StorageApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("bearer", []);

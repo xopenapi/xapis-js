@@ -3,6 +3,7 @@
 README.md
 package.json
 src/apis/ConfigApi.ts
+src/apis/SmsApi.ts
 src/apis/StorageApi.ts
 src/apis/index.ts
 src/index.ts
@@ -13,6 +14,9 @@ src/models/ConfigTemplate.ts
 src/models/CreateConfig.ts
 src/models/CreateConfigGroup.ts
 src/models/CreateConfigTemplate.ts
+src/models/SMSProvider.ts
+src/models/SendSMS.ts
+src/models/SendSMSResult.ts
 src/models/StorageProvider.ts
 src/models/StorageTemporaryCredentials.ts
 src/models/UpdateConfig.ts
