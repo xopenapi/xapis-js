@@ -23,57 +23,50 @@ import {
 /**
  * 
  * @export
- * @interface SendSMSResult
+ * @interface VideoSnapshot
  */
-export interface SendSMSResult {
-    /**
-     * 是否发送成功
-     * @type {boolean}
-     * @memberof SendSMSResult
-     */
-    success: boolean;
+export interface VideoSnapshot {
     /**
      * 
      * @type {Provider}
-     * @memberof SendSMSResult
+     * @memberof VideoSnapshot
      */
     provider: Provider;
     /**
-     * 服务商返回的请求ID
+     * 截图的链接地址
      * @type {string}
-     * @memberof SendSMSResult
+     * @memberof VideoSnapshot
      */
-    provierRequestId?: string;
+    url: string;
 }
 
 /**
- * Check if a given object implements the SendSMSResult interface.
+ * Check if a given object implements the VideoSnapshot interface.
  */
-export function instanceOfSendSMSResult(value: object): boolean {
+export function instanceOfVideoSnapshot(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "success" in value;
     isInstance = isInstance && "provider" in value;
+    isInstance = isInstance && "url" in value;
 
     return isInstance;
 }
 
-export function SendSMSResultFromJSON(json: any): SendSMSResult {
-    return SendSMSResultFromJSONTyped(json, false);
+export function VideoSnapshotFromJSON(json: any): VideoSnapshot {
+    return VideoSnapshotFromJSONTyped(json, false);
 }
 
-export function SendSMSResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): SendSMSResult {
+export function VideoSnapshotFromJSONTyped(json: any, ignoreDiscriminator: boolean): VideoSnapshot {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'success': json['success'],
         'provider': ProviderFromJSON(json['provider']),
-        'provierRequestId': !exists(json, 'provier_request_id') ? undefined : json['provier_request_id'],
+        'url': json['url'],
     };
 }
 
-export function SendSMSResultToJSON(value?: SendSMSResult | null): any {
+export function VideoSnapshotToJSON(value?: VideoSnapshot | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -82,9 +75,8 @@ export function SendSMSResultToJSON(value?: SendSMSResult | null): any {
     }
     return {
         
-        'success': value.success,
         'provider': ProviderToJSON(value.provider),
-        'provier_request_id': value.provierRequestId,
+        'url': value.url,
     };
 }
 

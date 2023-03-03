@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { StorageProvider } from './StorageProvider';
+import type { Provider } from './Provider';
 import {
-    StorageProviderFromJSON,
-    StorageProviderFromJSONTyped,
-    StorageProviderToJSON,
-} from './StorageProvider';
+    ProviderFromJSON,
+    ProviderFromJSONTyped,
+    ProviderToJSON,
+} from './Provider';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface StorageTemporaryCredentials {
     /**
      * 
-     * @type {StorageProvider}
+     * @type {Provider}
      * @memberof StorageTemporaryCredentials
      */
-    provider: StorageProvider;
+    provider: Provider;
     /**
      * 存储桶
      * @type {string}
@@ -87,7 +87,7 @@ export function StorageTemporaryCredentialsFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'provider': StorageProviderFromJSON(json['provider']),
+        'provider': ProviderFromJSON(json['provider']),
         'bucket': json['bucket'],
         'region': json['region'],
         'cdn': !exists(json, 'cdn') ? undefined : json['cdn'],
@@ -105,7 +105,7 @@ export function StorageTemporaryCredentialsToJSON(value?: StorageTemporaryCreden
     }
     return {
         
-        'provider': StorageProviderToJSON(value.provider),
+        'provider': ProviderToJSON(value.provider),
         'bucket': value.bucket,
         'region': value.region,
         'cdn': value.cdn,

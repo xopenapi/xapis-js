@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { SMSProvider } from './SMSProvider';
+import type { Provider } from './Provider';
 import {
-    SMSProviderFromJSON,
-    SMSProviderFromJSONTyped,
-    SMSProviderToJSON,
-} from './SMSProvider';
+    ProviderFromJSON,
+    ProviderFromJSONTyped,
+    ProviderToJSON,
+} from './Provider';
 
 /**
  * 
@@ -52,10 +52,10 @@ export interface SendSMS {
     sign?: string;
     /**
      * 
-     * @type {SMSProvider}
+     * @type {Provider}
      * @memberof SendSMS
      */
-    provider?: SMSProvider;
+    provider?: Provider;
 }
 
 /**
@@ -83,7 +83,7 @@ export function SendSMSFromJSONTyped(json: any, ignoreDiscriminator: boolean): S
         'content': json['content'],
         'params': !exists(json, 'params') ? undefined : json['params'],
         'sign': !exists(json, 'sign') ? undefined : json['sign'],
-        'provider': !exists(json, 'provider') ? undefined : SMSProviderFromJSON(json['provider']),
+        'provider': !exists(json, 'provider') ? undefined : ProviderFromJSON(json['provider']),
     };
 }
 
@@ -100,7 +100,7 @@ export function SendSMSToJSON(value?: SendSMS | null): any {
         'content': value.content,
         'params': value.params,
         'sign': value.sign,
-        'provider': SMSProviderToJSON(value.provider),
+        'provider': ProviderToJSON(value.provider),
     };
 }
 

@@ -16,27 +16,110 @@
 import * as runtime from '../runtime';
 import type {
   ApiError,
-  StorageProvider,
+  AudioInfo,
+  Provider,
   StorageTemporaryCredentials,
+  VideoInfo,
+  VideoSnapshot,
 } from '../models';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
-    StorageProviderFromJSON,
-    StorageProviderToJSON,
+    AudioInfoFromJSON,
+    AudioInfoToJSON,
+    ProviderFromJSON,
+    ProviderToJSON,
     StorageTemporaryCredentialsFromJSON,
     StorageTemporaryCredentialsToJSON,
+    VideoInfoFromJSON,
+    VideoInfoToJSON,
+    VideoSnapshotFromJSON,
+    VideoSnapshotToJSON,
 } from '../models';
 
+export interface GetAudioInfoRequest {
+    path: string;
+    provider?: Provider;
+}
+
 export interface GetStorageTemporaryCredentialsRequest {
-    provider?: StorageProvider;
+    provider?: Provider;
     path?: string;
+}
+
+export interface GetVideoInfoRequest {
+    path: string;
+    provider?: Provider;
+}
+
+export interface GetVideoSnapshotRequest {
+    path: string;
+    provider?: Provider;
+    time?: number;
+    snapshotPath?: string;
 }
 
 /**
  * 
  */
 export class StorageApi extends runtime.BaseAPI {
+
+    /**
+     * 获取音频信息
+     * 获取音频信息
+     */
+    async getAudioInfoRaw(requestParameters: GetAudioInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AudioInfo>> {
+        if (requestParameters.path === null || requestParameters.path === undefined) {
+            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling getAudioInfo.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.provider !== undefined) {
+            queryParameters['provider'] = requestParameters.provider;
+        }
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["storage:read"]);
+        }
+
+        const response = await this.request({
+            path: `/storage/v1/audio_info`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AudioInfoFromJSON(jsonValue));
+    }
+
+    /**
+     * 获取音频信息
+     * 获取音频信息
+     */
+    async getAudioInfo(requestParameters: GetAudioInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AudioInfo> {
+        const response = await this.getAudioInfoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * 获取上传文件临时凭证
@@ -88,6 +171,128 @@ export class StorageApi extends runtime.BaseAPI {
      */
     async getStorageTemporaryCredentials(requestParameters: GetStorageTemporaryCredentialsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StorageTemporaryCredentials> {
         const response = await this.getStorageTemporaryCredentialsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 获取视频信息
+     * 获取视频信息
+     */
+    async getVideoInfoRaw(requestParameters: GetVideoInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VideoInfo>> {
+        if (requestParameters.path === null || requestParameters.path === undefined) {
+            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling getVideoInfo.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.provider !== undefined) {
+            queryParameters['provider'] = requestParameters.provider;
+        }
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["storage:read"]);
+        }
+
+        const response = await this.request({
+            path: `/storage/v1/video_info`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => VideoInfoFromJSON(jsonValue));
+    }
+
+    /**
+     * 获取视频信息
+     * 获取视频信息
+     */
+    async getVideoInfo(requestParameters: GetVideoInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VideoInfo> {
+        const response = await this.getVideoInfoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 获取视频截图
+     * 获取视频截图
+     */
+    async getVideoSnapshotRaw(requestParameters: GetVideoSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VideoSnapshot>> {
+        if (requestParameters.path === null || requestParameters.path === undefined) {
+            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling getVideoSnapshot.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.provider !== undefined) {
+            queryParameters['provider'] = requestParameters.provider;
+        }
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        if (requestParameters.time !== undefined) {
+            queryParameters['time'] = requestParameters.time;
+        }
+
+        if (requestParameters.snapshotPath !== undefined) {
+            queryParameters['snapshot_path'] = requestParameters.snapshotPath;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-Client-ID"] = this.configuration.apiKey("X-Client-ID"); // apiKey authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            headerParameters["Authorization"] = await this.configuration.accessToken("oauth2", ["storage:read"]);
+        }
+
+        const response = await this.request({
+            path: `/storage/v1/video_snapshot`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => VideoSnapshotFromJSON(jsonValue));
+    }
+
+    /**
+     * 获取视频截图
+     * 获取视频截图
+     */
+    async getVideoSnapshot(requestParameters: GetVideoSnapshotRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VideoSnapshot> {
+        const response = await this.getVideoSnapshotRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
